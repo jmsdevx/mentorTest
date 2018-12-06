@@ -2,27 +2,96 @@ Answer each question in a written format
 
 1. What does semantic HTML mean?
 
+Semantic HTML is the preferred method of creating HTML tags which have more meaningful names than simply 'div'.
+When using semantic tags, the elements' which are being rendered determine the name of the tag being used. 
+By following this procedure, developers increase the readability of their code, as well as improve the browser's ability
+to render that code correctly.  Semantic tags are especially useful when using styled components, with which the developer
+is able to create specific, customized names for HTML tags.
+
 2. What is the box model?
+
+The box model refers to the design and layout of all the HTML 'boxes' which are being rendered to the DOM.  
+These boxes are also referred to as blocks. When styling in CSS, developers manipulate the size and positioning of these 
+blocks and the content within them.  From the interior of the box outward, content is arranged in the order of :
+1. Content 
+2. Padding (surrounds the content, adding space between content and border) 
+3. Border (wraps the padding) 
+4. Margin (extends out from the border,pushing other content away, or pushing self away from other borders).
+
 
 3. What is the difference between IDs and Classes?
 
+Classes and ID's are identifiers for CSS to control the styling of HTML elements.  Classes and ID's differ most when 
+considering their CSS specificity (the priority at which some styles are applied to an element, and some get overrides). 
+Classes have a low specificity, are useful for general elements, especifally if the developer wishes to reuse a class
+for multiple elements.  ID's have a high specificity, making them useful to override inherited styles, and should only
+be used for very specific, single elements on the DOM when using a class is no longer applicable.  
+
 4. What is z-index (CSS property) useful for?
+
+Z-index determines the depth of an HTML element on the DOM from the user's perspective.  Setting the z-index allows
+the developer to place certain elements in front or behind of others, allowing for hidden elements, overlapping, 
+or placing text, images, etc. over backgrounds or other images, text, etc. This depth ordering is referred to as 
+the 'stack order'.  It is important to note that Z-index may only be used on HTML elements which have defined
+positioning such as position: absolute, relative, and fixed. 
 
 5. Summarize what the keyword 'this' is used for?
 
+'This' is a keyword which is all about context and scope.  Context gives meaning to a piece of a language (code or otherwise)
+based on it's position in the scope of a program, function, sentence (for spoken lanugages).  By default, 'this' refers
+to the global object. When a new object is created with a constructor, 'this' now refers to that parent object while working
+inside that parent object's code. Knowing where 'this' is pointing is useful and important because it gives the ability to 
+bind certain methods and data to certain classes and objects, improving their reusability. 
+
 6. What is a callback? What are common uses for callbacks in JavaScript?
+
+A callback is a function which gets passed in as an argument to another function.  They are an integral part of functional
+programming and creating higher order functions. It is important to understand that when using a callback, 
+it is not executed in the parameter, but instead passes the definition of that function to be used later. This practice
+allows developers to create incredibly useful closures. Callbacks increase the 'DRY' aspect of your code. They allow developers
+to reuse small functions as parts of larger functions or classes, making code more efficient and readable.  
 
 7. What is a closure and why is it useful?
 
+To understand closures, a developer first must understand scope.  Scope refers to previously mentioned context, but in this case, 
+defines where variables are available.  Javascript, having functional scope, and only lets variables be available inside the functions
+where they are defined.  That being said, variables with global scope are available in all functions.  Closures are created by 
+nesting functions.  Functional scope dictates the the elements of an outer function are available in an inner function, much like
+elements in the global scope are available in a single function.  They can also access parameters of an outer function directly.  
+This allows closures to manipulate and store references to outer function data, in a controlled, and often recursive manner.  
+Examples of common Javascript methods which are closures are map and reduce. 
+
 8. How does a prototype work?
+
+The prototype property allows properties and and methods to be attached to objects and other data types. It is used to take advantage of
+inheritance, where adding methods and properties on an element's prototype allow it those methods and properties to be available in all
+instances of that element. 
 
 9. Describe what a component-based framework/library is?
 
+Component based libraries, like React, are a popular solution to improving development efficiency.  If building with them correctly, 
+a developer is able to take advantage of writing code in reusable pieces.  By combining these small pieces of code into larger components,
+developers can efficiently create large applications in a much shorter amount of time. 
+
 10. What is the component lifecycle in React?
+
+React's component lifecycle describes the stages a component goes through.  There are four phases: initialization, mounting, updating, and unmounting. 
+React uses lifecycle hooks to all a developer to take advantage of the component reaching these points, and defining functionality at each
+step of the process.  
 
 11. What is REST? (not just a description of the acronym)
 
+REST is a style of building web systems which sets a standard for systems to communicate.  It stands for Representational State Transfer. 
+RESTful systems implement the client and server independently, without knowledge of the other.  This allows client-side scripts to change
+without affected the server.  The separation works well when dividing user interface code from storage code.  This improves flexibility and
+scalability across platforms. 
+
 12. Name three common ways of getting data from a request (in Express.JS):
+
+The three most common ways to get data from a request in express are by taking advantage of body, params, and queries.  Body allows
+the attachment of an object to a request, which can be extracted through req.body.  Params (in the route portion of the URL),
+ and queries (after the ? in the URL) pass information through the URL of the request, and are accessed through req.params and
+ req.query, respectively. 
 
 
 
@@ -38,8 +107,20 @@ email varchar(255)
 
 -Get all users:
 
+SELECT * FROM users
+
 -Create a new user with the name of 'your name' and an email of 'fake@fake.com':
+
+INSERT INTO users (name, email) 
+VALUES ('your name', 'fake@fake.com')
 
 -Update the newly created user's name to 'Bobby Boy':
 
+UPDATE users
+SET name = 'Bobby Boy'
+WHERE email = 'fake@fake.com'
+
 -Delete the newly updated user:
+
+DELETE FROM users
+WHERE email = 'fake@fake.com'
